@@ -39,7 +39,7 @@ const Navbar = ({ className }) => {
         className
       )}
     >
-      <div className="rounded-xl border border-gray-800/60 bg-gray-900/70 backdrop-blur shadow-lg">
+      <div className="rounded-xl border border-transparent bg-[#344366] backdrop-blur shadow-lg">
         <div className="flex items-center justify-between px-4 pt-3">
           <Brand />
         </div>
