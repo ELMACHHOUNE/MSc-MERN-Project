@@ -9,6 +9,7 @@ import AuthProvider, { AuthContext } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import MainLayout from "./layouts/MainLayout";
 import BackgroundBoxes from "./components/BackgroundBoxes";
+import Loader from "./components/Loader";
 
 // Lazy-loaded pages
 const Register = lazy(() => import("./components/Register"));
@@ -31,13 +32,7 @@ function App() {
     <BackgroundBoxes>
       <AuthProvider>
         <Router>
-          <Suspense
-            fallback={
-              <div className="flex items-center justify-center h-screen text-gray-400">
-                Loading...
-              </div>
-            }
-          >
+          <Suspense fallback={<Loader />}>
             <Routes>
               <Route element={<MainLayout />}>
                 <Route path="/" element={<RootRedirect />} />
