@@ -22,7 +22,7 @@ const RootRedirect = () => {
   return user ? (
     <Navigate to="/dashboard" replace />
   ) : (
-    <Navigate to="/login" replace />
+    <Navigate to="/" replace />
   );
 };
 
