@@ -10,8 +10,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import MainLayout from "./layouts/MainLayout";
 import BackgroundBoxes from "./components/BackgroundBoxes";
 import Loader from "./components/Loader";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
 
 // Lazy-loaded pages
 const Register = lazy(() => import("./components/Register"));
@@ -35,7 +33,6 @@ function App() {
       <AuthProvider>
         <Router>
           <div className="min-h-screen flex flex-col">
-            <Navbar />
             <Suspense fallback={<Loader />}>
               <Routes>
                 <Route element={<MainLayout />}>
@@ -54,7 +51,6 @@ function App() {
                 </Route>
               </Routes>
             </Suspense>
-            <Footer />
           </div>
         </Router>
       </AuthProvider>
