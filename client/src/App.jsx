@@ -10,6 +10,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import MainLayout from "./layouts/MainLayout";
 import BackgroundBoxes from "./components/BackgroundBoxes";
 import Loader from "./components/Loader";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 // Lazy-loaded pages
 const Register = lazy(() => import("./components/Register"));
@@ -32,24 +34,28 @@ function App() {
     <BackgroundBoxes>
       <AuthProvider>
         <Router>
-          <Suspense fallback={<Loader />}>
-            <Routes>
-              <Route element={<MainLayout />}>
-                <Route path="/" element={<RootRedirect />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route
-                  path="/dashboard"
-                  element={
-                    <PrivateRoute>
-                      <Dashboard />
-                    </PrivateRoute>
-                  }
-                />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-          </Suspense>
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <Suspense fallback={<Loader />}>
+              <Routes>
+                <Route element={<MainLayout />}>
+                  <Route path="/" element={<RootRedirect />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route
+                    path="/dashboard"
+                    element={
+                      <PrivateRoute>
+                        <Dashboard />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+              </Routes>
+            </Suspense>
+            <Footer />
+          </div>
         </Router>
       </AuthProvider>
     </BackgroundBoxes>
